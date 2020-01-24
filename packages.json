@@ -1,0 +1,121 @@
+{
+    "packageId": "d6e21c84e1eab8",
+    "name": "datastore test",
+    "description": "testing a datastore!",
+    "buttons": [
+        {
+            "buttonId": "2f840d2be8ec1",
+            "name": "populate",
+            "description": "populate a datastore",
+            "type": "action",
+            "questions": [
+                {
+                    "question": "add some values",
+                    "type": "keypad",
+                    "values": {
+                        "keys": [
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            0
+                        ],
+                        "delete": true,
+                        "max": 0
+                    },
+                    "validators": [],
+                    "compulsory": true,
+                    "questionId": "276dfbe2e62634",
+                    "number": 1
+                }
+            ],
+            "navigation": {
+                "id": "276dfbe2e62634",
+                "type": "node",
+                "parent": null,
+                "children": [
+                    {
+                        "id": "2a3850562a6006",
+                        "type": "node",
+                        "parent": "276dfbe2e62634",
+                        "children": []
+                    }
+                ],
+                "defaults": {}
+            },
+            "webhooks": [
+                {
+                    "name": "log endpoint",
+                    "type": "log",
+                    "url": "https://[buttonkit]/api/v1/datastore/log",
+                    "method": "POST",
+                    "contentType": "json",
+                    "parameters": {
+                        "dynamic": {
+                            "presser": [
+                                {
+                                    "id": "2a3850562a6006_presser",
+                                    "type": "presser"
+                                }
+                            ],
+                            "pressed": [
+                                {
+                                    "id": "2a3850562a6006_pressed",
+                                    "type": "pressed"
+                                }
+                            ]
+                        },
+                        "static": {
+                            "_datastorename": "keyvalues"
+                        }
+                    },
+                    "webhookId": "2a3850562a6006"
+                }
+            ]
+        },
+        {
+            "buttonId": "f18fe101d45218",
+            "name": "see values",
+            "description": "see values",
+            "type": "action",
+            "questions": [
+                {
+                    "question": "items older than a minute",
+                    "type": "datastoreitem",
+                    "values": {
+                        "storeId": "keyvalues",
+                        "schema": [],
+                        "dschema": [],
+                        "filters": [
+                            {
+                                "type": "duration",
+                                "value": 60,
+                                "op": "gt"
+                            }
+                        ],
+                        "limit": -1,
+                        "orderby": "pressed",
+                        "sortby": "asc"
+                    },
+                    "validators": [],
+                    "compulsory": true,
+                    "questionId": "8b2235a00954d8",
+                    "number": 1
+                }
+            ],
+            "navigation": {
+                "id": "8b2235a00954d8",
+                "type": "node",
+                "parent": null,
+                "children": [],
+                "defaults": {}
+            },
+            "webhooks": []
+        }
+    ]
+}

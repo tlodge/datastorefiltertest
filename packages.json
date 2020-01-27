@@ -1,5 +1,5 @@
 {
-    "packageId": "d6e21c84e1eab8",
+    "packageId": "40acfbf484aaf4",
     "name": "datastore test",
     "description": "testing a datastore!",
     "buttons": [
@@ -43,7 +43,8 @@
                         "id": "2a3850562a6006",
                         "type": "node",
                         "parent": "276dfbe2e62634",
-                        "children": []
+                        "children": [],
+                        "rules": []
                     }
                 ],
                 "defaults": {}
@@ -80,7 +81,7 @@
         },
         {
             "buttonId": "f18fe101d45218",
-            "name": "see values",
+            "name": "older than a min",
             "description": "see values",
             "type": "action",
             "questions": [
@@ -89,7 +90,26 @@
                     "type": "datastoreitem",
                     "values": {
                         "storeId": "keyvalues",
-                        "schema": [],
+                        "schema": [
+                            {
+                                "id": "2a3850562a6006_presser",
+                                "path": "2a3850562a6006_presser",
+                                "alias": "presser",
+                                "default": ""
+                            },
+                            {
+                                "id": "2a3850562a6006_pressed",
+                                "path": "2a3850562a6006_pressed",
+                                "alias": "pressed",
+                                "default": ""
+                            },
+                            {
+                                "id": "276dfbe2e62634",
+                                "path": "276dfbe2e62634",
+                                "alias": "values",
+                                "default": ""
+                            }
+                        ],
                         "dschema": [],
                         "filters": [
                             {
@@ -110,6 +130,64 @@
             ],
             "navigation": {
                 "id": "8b2235a00954d8",
+                "type": "node",
+                "parent": null,
+                "children": [],
+                "defaults": {}
+            },
+            "webhooks": []
+        },
+        {
+            "buttonId": "36ca39b222d4de",
+            "name": "earlier than  min",
+            "description": "button description",
+            "type": "action",
+            "questions": [
+                {
+                    "question": "earlier than min",
+                    "type": "datastoreitem",
+                    "values": {
+                        "storeId": "keyvalues",
+                        "schema": [
+                            {
+                                "id": "2a3850562a6006_presser",
+                                "path": "2a3850562a6006_presser",
+                                "alias": "presser",
+                                "default": ""
+                            },
+                            {
+                                "id": "2a3850562a6006_pressed",
+                                "path": "2a3850562a6006_pressed",
+                                "alias": "pressed",
+                                "default": ""
+                            },
+                            {
+                                "id": "276dfbe2e62634",
+                                "path": "276dfbe2e62634",
+                                "alias": "values",
+                                "default": ""
+                            }
+                        ],
+                        "dschema": [],
+                        "filters": [
+                            {
+                                "type": "duration",
+                                "value": 60,
+                                "op": "lt"
+                            }
+                        ],
+                        "limit": -1,
+                        "orderby": "pressed",
+                        "sortby": "asc"
+                    },
+                    "validators": [],
+                    "compulsory": true,
+                    "questionId": "167e2858564ee8",
+                    "number": 1
+                }
+            ],
+            "navigation": {
+                "id": "167e2858564ee8",
                 "type": "node",
                 "parent": null,
                 "children": [],
